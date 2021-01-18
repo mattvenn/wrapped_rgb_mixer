@@ -1,0 +1,54 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Mon Jan 18 11:51:44 2021
+[*]
+[dumpfile] "/home/matt/work/asic-workshop/project3.2/wrapper.vcd"
+[dumpfile_mtime] "Mon Jan 18 11:50:38 2021"
+[dumpfile_size] 356513
+[savefile] "/home/matt/work/asic-workshop/project3.2/wrapper.gtkw"
+[timestart] 0
+[size] 1766 991
+[pos] 42 47
+*-14.000000 24940 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] wrapper.
+[treeopen] wrapper.rgb_mixer0.
+[sst_width] 273
+[signals_width] 542
+[sst_expanded] 1
+[sst_vpaned_height] 271
+@28
+wrapper.wb_clk_i
+@22
+wrapper.la_data_in[31:0]
+@28
+wrapper.wb_rst_i
+wrapper.active
+@200
+-
+@800022
+wrapper.io_in[37:0]
+@28
+(28)wrapper.io_in[37:0]
+(29)wrapper.io_in[37:0]
+@1001200
+-group_end
+@22
+wrapper.io_oeb[37:0]
+@800022
+wrapper.io_out[37:0]
+@28
+(21)wrapper.io_out[37:0]
+(22)wrapper.io_out[37:0]
+(23)wrapper.io_out[37:0]
+@1001200
+-group_end
+@200
+-
+@28
+wrapper.rgb_mixer0.clk
+wrapper.rgb_mixer0.reset
+wrapper.rgb_mixer0.pwm0_out
+wrapper.rgb_mixer0.pwm1_out
+wrapper.rgb_mixer0.pwm2_out
+[pattern_trace] 1
+[pattern_trace] 0
