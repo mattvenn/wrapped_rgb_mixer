@@ -12,6 +12,7 @@ async def test_wrapper(dut):
     clocks_per_phase = 5
     encoder = Encoder(dut.wb_clk_i, dut.io_in[8], dut.io_in[9], clocks_per_phase = clocks_per_phase, noise_cycles = 0)
 
+    dut.active <= 0
     dut.wb_rst_i <= 1
     await ClockCycles(dut.wb_clk_i, 5)
     dut.wb_rst_i <= 0
