@@ -2,7 +2,7 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, ClockCycles
 
-from project2_1.test.encoder import Encoder
+from rgb_mixer.test.encoder import Encoder
 
 @cocotb.test()
 async def test_wrapper(dut):

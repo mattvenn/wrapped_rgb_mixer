@@ -1,4 +1,5 @@
 `default_nettype none
+`timescale 1ns/1ns
 `ifdef FORMAL
     `define MPRJ_IO_PADS 38    
 `endif
