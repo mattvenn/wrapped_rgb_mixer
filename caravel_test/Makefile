@@ -30,7 +30,7 @@ SIM?=RTL
 
 PATTERN = rgb_mixer
 
-all:  ${PATTERN:=.vcd}
+all:  coco_test
 
 hex:  ${PATTERN:=.hex}
 
