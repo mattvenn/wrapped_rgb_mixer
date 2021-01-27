@@ -19,6 +19,14 @@ VERILOG_PATH = ../../../..
 RTL_PATH = $(VERILOG_PATH)/rtl
 IP_PATH = ../../../../ip
 BEHAVIOURAL_MODELS = ../../ 
+PROJECT_DIR = $(RTL_PATH)/wrapped_rgb_mixer/
+PROJECT_FILES = $(addprefix $(PROJECT_DIR), \
+	wrapper.v \
+	rgb_mixer/src/rgb_mixer.v \
+	rgb_mixer/src/encoder.v \
+	rgb_mixer/src/pwm.v \
+	rgb_mixer/src/debounce.v \
+)
 
 GCC_PATH?=/ef/apps/bin
 GCC_PREFIX?=riscv32-unknown-elf
@@ -26,11 +34,13 @@ PDK_PATH?=/ef/tech/SW/sky130A
 
 SIM?=RTL
 
+
 .SUFFIXES:
 
 PATTERN = rgb_mixer
 
-all:  coco_test
+#all:  coco_test
+all:  ${PATTERN:=.vcd}
 
 hex:  ${PATTERN:=.hex}
 
@@ -38,7 +48,7 @@ coco_test: ${PATTERN}.hex
 	rm -rf sim_build/
 	mkdir sim_build/
 	iverilog -o sim_build/sim.vvp -s rgb_mixer_tb rgb_mixer_tb.v -DSIM -DFUNCTIONAL \
-    -I $(BEHAVIOURAL_MODELS) -I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) 
+    -I $(BEHAVIOURAL_MODELS) -I $(PDK_PATH) -I $(IP_PATH) -I $(RTL_PATH) $(PROJECT_FILES)
 	
 	MODULE=test_rgb_mixer vvp -M $$(cocotb-config --prefix)/cocotb/libs -m libcocotbvpi_icarus sim_build/sim.vvp
 
