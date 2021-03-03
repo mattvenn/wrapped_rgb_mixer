@@ -33,7 +33,14 @@ wrapper_cksum:
 # openlane config, used in case I need to re-harden
 openlane:
   config: "config.tcl"
-  src_directory: "." # where the source files are
+
+# source required for various configs and module instantiation
+source:
+    - wrapper.v
+    - rgb_mixer/src/debounce.v
+    - rgb_mixer/src/encoder.v
+    - rgb_mixer/src/pwm.v
+    - rgb_mixer/src/rgb_mixer.v
 
 # gds - check size = 300x300, nothing on metal 5, do a DRC, check 141 tristate buffers, check LVS
 gds:
