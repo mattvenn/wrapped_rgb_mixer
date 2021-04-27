@@ -49,7 +49,7 @@ source:
 # gds - check size = 300x300, nothing on metal 5, do a DRC, check 141 tristate buffers, check LVS
 gds:
   directory: "gds"
-  gds_filename: "wrapper.gds"
-  lvs_filename: "wrapper.lvs.powered.v"
-  lef_filename: "wrapper.lef"
+  gds_filename: "wrapped_rgb_mixer.gds"
+  lef_filename: "wrapper_rgb_mixer.lef"
+  lvs_filename: "wrapper_rgb_mixer.lvs.powered.v"
 
