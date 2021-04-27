@@ -50,6 +50,6 @@ source:
 gds:
   directory: "gds"
   gds_filename: "wrapped_rgb_mixer.gds"
-  lef_filename: "wrapper_rgb_mixer.lef"
-  lvs_filename: "wrapper_rgb_mixer.lvs.powered.v"
+  lef_filename: "wrapped_rgb_mixer.lef"
+  lvs_filename: "wrapped_rgb_mixer.lvs.powered.v"
 
