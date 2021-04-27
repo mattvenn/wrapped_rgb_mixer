@@ -1,7 +1,7 @@
 # User config
 set script_dir [file dirname [file normalize [info script]]]
 
-set ::env(DESIGN_NAME) wrapper
+set ::env(DESIGN_NAME) wrapped_rgb_mixer
 
 # Change if needed
 set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
