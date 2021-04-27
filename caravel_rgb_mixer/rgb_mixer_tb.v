@@ -28,7 +28,7 @@ module rgb_mixer_tb;
         #1;
     end
 
-	reg clock;
+	reg clk;
     reg RSTB;
 	reg power1, power2;
 	reg power3, power4;
@@ -78,7 +78,7 @@ module rgb_mixer_tb;
 		.vccd2	  (USER_VDD1V8),
 		.vssd1	  (VSS),
 		.vssd2	  (VSS),
-		.clock	  (clock),
+		.clock	  (clk),
 		.gpio     (gpio),
         	.mprj_io  (mprj_io),
 		.flash_csb(flash_csb),
