@@ -2,7 +2,7 @@ import cocotb
 from cocotb.clock import Clock
 from cocotb.triggers import RisingEdge, FallingEdge, ClockCycles
 import random
-from test.test_encoder import Encoder
+from test_encoder import Encoder
 
 clocks_per_phase = 10
 

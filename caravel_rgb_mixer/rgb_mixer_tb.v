@@ -17,7 +17,8 @@
 
 `timescale 1 ns / 1 ps
 
-`include "caravel.v"
+`include "uprj_netlists.v" // this file gets created automatically by multi_project_tools from the source section of info.yaml
+`include "caravel_netlists.v"
 `include "spiflash.v"
 
 module rgb_mixer_tb;
@@ -35,10 +36,20 @@ module rgb_mixer_tb;
     wire gpio;
     wire [37:0] mprj_io;
 
-    // convenience signals
+    ///// convenience signals that match what the cocotb test modules are looking for
     wire pwm0_out = mprj_io[14];
     wire pwm1_out = mprj_io[15];
     wire pwm2_out = mprj_io[16];
+
+    wire enc0_a, enc0_b, enc1_a, enc1_b, enc2_a, enc2_b;
+
+    assign mprj_io[ 8] = enc0_a;
+    assign mprj_io[ 9] = enc0_b;
+    assign mprj_io[10] = enc1_a;
+    assign mprj_io[11] = enc1_b;
+    assign mprj_io[12] = enc2_a;
+    assign mprj_io[13] = enc2_b;
+    /////
     
 
 	wire flash_csb;
