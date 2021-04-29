@@ -27,13 +27,6 @@ wrapper_proof:
   directory: "."
   sby: "properties.sby"
 
-# check the wrapper hasn't changed except for the module instantiation
-wrapper_cksum:
-  directory: "."
-  instance_start: 70
-  instance_end  : 81 # these lines will be removed before md5sum
-  filename: "wrapper.v"
-
 # openlane config, used in case I need to re-harden
 openlane:
   config: "config.tcl"
