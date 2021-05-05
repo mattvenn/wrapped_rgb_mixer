@@ -59,11 +59,13 @@ void main()
     while (reg_mprj_xfer == 1);
 
     // activate the project by setting the 0th bit of 2nd bank of LA
-    reg_la1_ena  = 0;
+    reg_la1_iena = 0; // input enable off
+    reg_la1_oenb = 0; // output enable bar low (enabled)
     reg_la1_data = 1;
 
     // reset design with 0bit of 1st bank of LA
-    reg_la0_ena  = 0;
+    reg_la0_oenb = 0;
+    reg_la0_iena = 0;
     reg_la0_data = 1;
     reg_la0_data = 0;
 
