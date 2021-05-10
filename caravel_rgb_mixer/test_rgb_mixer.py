@@ -1,6 +1,6 @@
 import cocotb
 from cocotb.clock import Clock
-from cocotb.triggers import RisingEdge, FallingEdge, ClockCycles
+from cocotb.triggers import RisingEdge, FallingEdge, ClockCycles, with_timeout
 import random
 from test_encoder import Encoder
 
@@ -54,8 +54,8 @@ async def test_all(dut):
 
     cocotb.fork(clock.start())
 
-    # wait for the reset signal
-    await RisingEdge(dut.uut.mprj.wrapped_rgb_mixer.rgb_mixer0.reset)
+    # wait for the reset signal - time out if necessary - should happen around 165us
+    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer.rgb_mixer0.reset), 180, 'us')
     await FallingEdge(dut.uut.mprj.wrapped_rgb_mixer.rgb_mixer0.reset)
 
     assert dut.uut.mprj.wrapped_rgb_mixer.rgb_mixer0.enc0 == 0
