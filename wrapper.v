@@ -36,6 +36,7 @@ module wrapped_rgb_mixer (
     output wire [`MPRJ_IO_PADS-1:0] io_out,
     output wire [`MPRJ_IO_PADS-1:0] io_oeb,
 
+    // IRQ
     output wire [2:0] irq,
     
     // active input, only connect tristated outputs if this is high
