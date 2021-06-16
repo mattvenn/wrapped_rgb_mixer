@@ -14,7 +14,7 @@ async def run_encoder_test(encoder, max_count):
     for i in range(10):
         await encoder.update(0)
 
-# takes ~???  seconds on my PC
+# takes ~4:30 minutes on my PC
 @cocotb.test()
 async def test_rgb_mixer_gl(dut):
     clock = Clock(dut.clk, 25, units="ns")
