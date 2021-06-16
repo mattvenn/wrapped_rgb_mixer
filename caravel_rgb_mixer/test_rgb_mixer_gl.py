@@ -24,11 +24,6 @@ async def test_rgb_mixer_gl(dut):
     encoder1 = Encoder(dut.clk, dut.enc1_a, dut.enc1_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
     encoder2 = Encoder(dut.clk, dut.enc2_a, dut.enc2_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
 
-    # have to get the outputs non z
-    await encoder0.update(0)
-    await encoder1.update(0)
-    await encoder2.update(0)
-
     dut.RSTB <= 0
     dut.power1 <= 0;
     dut.power2 <= 0;
