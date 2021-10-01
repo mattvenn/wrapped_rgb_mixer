@@ -60,8 +60,10 @@ module wrapped_rgb_mixer (
     output wire [2:0] irq,
 `endif
 
+`ifdef USE_CLK2
     // extra user clock
     input wire user_clock2,
+`endif
     
     // active input, only connect tristated outputs if this is high
     input wire active
