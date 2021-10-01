@@ -8,6 +8,8 @@ project:
   github: https://github.com/mattvenn/wrapped_rgb_mixer/tree/caravel-mpw-two-c
   license: LICENSE
 
+interfaces: ['la', 'gpio']
+
 # test within caravel
 caravel_test:
   recipe: "coco_test"
