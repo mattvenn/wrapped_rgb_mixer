@@ -18,7 +18,7 @@ set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
     $::env(DESIGN_DIR)/rgb_mixer/src/encoder.v"
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 160 160"
+set ::env(DIE_AREA) "0 0 150 190"
 set ::env(PL_TARGET_DENSITY) 0.75
 
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
