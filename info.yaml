@@ -8,7 +8,7 @@ project:
   github: https://github.com/mattvenn/wrapped_rgb_mixer/tree/caravel-mpw-two-c
   license: LICENSE
 
-interfaces: ['la', 'gpio']
+interfaces: ['la1', 'gpio']
 
 # test within caravel
 caravel_test:
