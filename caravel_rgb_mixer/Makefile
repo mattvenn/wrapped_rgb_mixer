@@ -36,7 +36,9 @@ PDK_PATH?=/ef/tech/SW/sky130A
 SIM?=RTL
 
 # include the modules that cocotb needs for test
+export COCOTB_REDUCED_LOG_FMT=1
 export PYTHONPATH := $(UPRJ_RTL_PATH)/wrapped_rgb_mixer/rgb_mixer/test
+export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
 
 .SUFFIXES:
 
