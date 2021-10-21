@@ -5,7 +5,6 @@ project:
   description: "reads 3 encoders and generates PWM signals to drive an RGB LED"
   author: "Matt Venn"
   picture: doc/schematic.jpg
-  github: https://github.com/mattvenn/wrapped_rgb_mixer/tree/caravel-mpw-two-c
   license: LICENSE
 
 interfaces: ['la1', 'gpio']
