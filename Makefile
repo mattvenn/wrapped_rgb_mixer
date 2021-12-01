@@ -1,5 +1,6 @@
 # cocotb setup
 export COCOTB_REDUCED_LOG_FMT=1
+export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
 
 test_wrapper:
 	rm -rf sim_build/
