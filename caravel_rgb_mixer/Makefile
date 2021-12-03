@@ -37,6 +37,7 @@ SIM?=RTL
 
 # include the modules that cocotb needs for test
 export PYTHONPATH := $(UPRJ_RTL_PATH)/wrapped_rgb_mixer/rgb_mixer/test
+export LIBPYTHON_LOC=$(shell cocotb-config --libpython)
 
 .SUFFIXES:
 
