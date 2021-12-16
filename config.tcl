@@ -37,3 +37,6 @@ set ::env(GND_NETS) [list {vssd1}]
 
 set ::env(RUN_CVC) 0
 
+
+set ::env(FP_IO_VTHICKNESS_MULT) 4
+set ::env(FP_IO_HTHICKNESS_MULT) 4
