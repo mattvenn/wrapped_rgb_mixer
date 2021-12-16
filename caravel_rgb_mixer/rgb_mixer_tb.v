@@ -28,10 +28,13 @@ module rgb_mixer_tb;
         #1;
     end
 
-	reg clk;
+    reg clk;
     reg RSTB;
-	reg power1, power2;
-	reg power3, power4;
+    reg power1, power2;
+    reg power3, power4;
+
+    // GL design loses the reset signal name
+    wire design_reset = uut.mprj.la1_data_in[0];
 
     wire gpio;
     wire [37:0] mprj_io;
@@ -52,52 +55,52 @@ module rgb_mixer_tb;
     /////
     
 
-	wire flash_csb;
-	wire flash_clk;
-	wire flash_io0;
-	wire flash_io1;
+    wire flash_csb;
+    wire flash_clk;
+    wire flash_io0;
+    wire flash_io1;
 
-	wire VDD3V3 = power1;
-	wire VDD1V8 = power2;
-	wire USER_VDD3V3 = power3;
-	wire USER_VDD1V8 = power4;
-	wire VSS = 1'b0;
+    wire VDD3V3 = power1;
+    wire VDD1V8 = power2;
+    wire USER_VDD3V3 = power3;
+    wire USER_VDD1V8 = power4;
+    wire VSS = 1'b0;
 
-	caravel uut (
-		.vddio	  (VDD3V3),
-		.vssio	  (VSS),
-		.vdda	  (VDD3V3),
-		.vssa	  (VSS),
-		.vccd	  (VDD1V8),
-		.vssd	  (VSS),
-		.vdda1    (USER_VDD3V3),
-		.vdda2    (USER_VDD3V3),
-		.vssa1	  (VSS),
-		.vssa2	  (VSS),
-		.vccd1	  (USER_VDD1V8),
-		.vccd2	  (USER_VDD1V8),
-		.vssd1	  (VSS),
-		.vssd2	  (VSS),
-		.clock	  (clk),
-		.gpio     (gpio),
-        	.mprj_io  (mprj_io),
-		.flash_csb(flash_csb),
-		.flash_clk(flash_clk),
-		.flash_io0(flash_io0),
-		.flash_io1(flash_io1),
-		.resetb	  (RSTB)
-	);
+    caravel uut (
+        .vddio    (VDD3V3),
+        .vssio    (VSS),
+        .vdda     (VDD3V3),
+        .vssa     (VSS),
+        .vccd     (VDD1V8),
+        .vssd     (VSS),
+        .vdda1    (USER_VDD3V3),
+        .vdda2    (USER_VDD3V3),
+        .vssa1    (VSS),
+        .vssa2    (VSS),
+        .vccd1    (USER_VDD1V8),
+        .vccd2    (USER_VDD1V8),
+        .vssd1    (VSS),
+        .vssd2    (VSS),
+        .clock    (clk),
+        .gpio     (gpio),
+        .mprj_io  (mprj_io),
+        .flash_csb(flash_csb),
+        .flash_clk(flash_clk),
+        .flash_io0(flash_io0),
+        .flash_io1(flash_io1),
+        .resetb   (RSTB)
+    );
 
-	spiflash #(
-		.FILENAME("rgb_mixer.hex")
-	) spiflash (
-		.csb(flash_csb),
-		.clk(flash_clk),
-		.io0(flash_io0),
-		.io1(flash_io1),
-		.io2(),			// not used
-		.io3()			// not used
-	);
+    spiflash #(
+        .FILENAME("rgb_mixer.hex")
+    ) spiflash (
+        .csb(flash_csb),
+        .clk(flash_clk),
+        .io0(flash_io0),
+        .io1(flash_io1),
+        .io2(),         // not used
+        .io3()          // not used
+    );
 
 endmodule
 `default_nettype wire
