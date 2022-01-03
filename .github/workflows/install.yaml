@@ -37,7 +37,9 @@ jobs:
 
     # test multi project tools
     - name: test multi tools
-      run: ./multi_tool.py
+      run: |
+        cd ./multi_project_tools
+        ./multi_tool.py
 
     # PDK dependencies we can install from package manager
     - name: install deps
