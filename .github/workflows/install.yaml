@@ -41,8 +41,9 @@ jobs:
       run: |
         cd ./multi_project_tools
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos --project $PROJECT_ID 
-        find .
-        ./multi_tool.py --project $PROJECT_ID --test-git --test-gds
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID 
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-git
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-gds
 
     # install oss suite
     - name: install oss suite
@@ -50,6 +51,13 @@ jobs:
         bash ${GITHUB_WORKSPACE}/.github/scripts/install_oss_suite.sh
         export PATH=$PATH:${GITHUB_WORKSPACE}/oss-cad-suite/bin
         yosys
+
+    # install riscv
+    - name: install RISCV
+      run: |
+        bash ${GITHUB_WORKSPACE}/.github/scripts/install_riscv_gcc.sh
+        export PATH=$PATH:${GITHUB_WORKSPACE}/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin
+        riscv64-unknown-elf-gcc
 
     # PDK dependencies we can install from package manager
     - name: install deps
