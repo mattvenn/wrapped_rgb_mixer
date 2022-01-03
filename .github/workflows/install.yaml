@@ -65,6 +65,12 @@ jobs:
     - name: install PDK & OpenLane
       run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_pdk.sh
 
+    # check pdk path
+    - name: check pdk
+      run: |
+        ls $PDK_ROOT
+        ls $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+
     # test multi project tools
     # not git-test as it will fail while on actions branch
     - name: test multi tools
