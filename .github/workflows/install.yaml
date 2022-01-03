@@ -6,7 +6,6 @@ jobs:
 
   install:
     env:
-        PROJECT_ID:             1
         MAGIC_VERSION:          8.3.209
         NETGEN_VERSION:         1.5.205
         PDK_ROOT:               /home/runner/pdk
@@ -36,16 +35,6 @@ jobs:
     - name: install python deps
       run: pip3 install -r ./multi_project_tools/requirements.txt
 
-    # test multi project tools
-    - name: test multi tools
-      run: |
-        cd ./multi_project_tools
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos --project $PROJECT_ID 
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-git
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-gds
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-gds
-
     # install oss suite
     - name: install oss suite
       run: |
@@ -67,6 +56,21 @@ jobs:
     # netgen dependency
     - name: install netgen
       run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_netgen.sh
+
+    # test multi project tools
+    - name: test multi tools
+      run: |
+        cd ./multi_project_tools
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-git
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-gds
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-module
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --prove-wrapper
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-tristate
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-lvs --force
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-ports
+
+
 #
 #    # magic dependency
 #    - name: install magic
