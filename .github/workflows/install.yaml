@@ -40,14 +40,18 @@ jobs:
       run: |
         bash ${GITHUB_WORKSPACE}/.github/scripts/install_oss_suite.sh
         echo ${GITHUB_WORKSPACE}/oss-cad-suite/bin >> $GITHUB_PATH
-        yosys --version
+
+    - name: test yosys
+        run: yosys --version
 
     # install riscv
     - name: install RISCV
       run: |
         bash ${GITHUB_WORKSPACE}/.github/scripts/install_riscv_gcc.sh
         echo ${GITHUB_WORKSPACE}/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin >> $GITHUB_PATH
-        riscv64-unknown-elf-gcc --version
+
+    - name: test RISCV
+      run: riscv64-unknown-elf-gcc --version
 
     # PDK dependencies we can install from package manager
     - name: install deps
