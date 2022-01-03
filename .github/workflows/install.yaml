@@ -39,7 +39,7 @@ jobs:
     - name: install oss suite
       run: |
         bash ${GITHUB_WORKSPACE}/.github/scripts/install_oss_suite.sh
-        echo ${GITHUB_WORKSPACE}/oss-cad-suite/bin >> $GITHUB_PATH
+        echo ${HOME}/oss-cad-suite/bin >> $GITHUB_PATH
 
     - name: test yosys
       run: yosys --version
@@ -48,7 +48,7 @@ jobs:
     - name: install RISCV
       run: |
         bash ${GITHUB_WORKSPACE}/.github/scripts/install_riscv_gcc.sh
-        echo ${GITHUB_WORKSPACE}/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin >> $GITHUB_PATH
+        echo ${HOME}/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin >> $GITHUB_PATH
 
     - name: test RISCV
       run: riscv64-unknown-elf-gcc --version
