@@ -1,3 +1,4 @@
+set -eu
 cd $HOME
 git clone https://github.com/efabless/caravel_user_project.git
 
