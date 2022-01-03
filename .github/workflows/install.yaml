@@ -41,7 +41,6 @@ jobs:
       run: |
         cd ./multi_project_tools
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos --project $PROJECT_ID 
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID 
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-git
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-gds
 
@@ -62,10 +61,10 @@ jobs:
     # PDK dependencies we can install from package manager
     - name: install deps
       run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
-#
-#    # netgen dependency
-#    - name: install netgen
-#      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_netgen.sh
+
+    # netgen dependency
+    - name: install netgen
+      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_netgen.sh
 #
 #    # magic dependency
 #    - name: install magic
