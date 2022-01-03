@@ -1,10 +1,10 @@
 project_directory: "../"
 
 caravel:
-    root:           /home/runner/caravel_user_project/caravel
-    gl_dir:         /home/runner/caravel_user_project/caravel/verilog/gl
-    test_dir:       /home/runner/caravel_user_project/caravel/verilog/dv
-    rtl_dir:        /home/runner/caravel_user_project/caravel/verilog/rtl
+    root:           /home/runner/caravel_user_project/
+    gl_dir:         /home/runner/caravel_user_project/verilog/gl
+    test_dir:       /home/runner/caravel_user_project/verilog/dv
+    rtl_dir:        /home/runner/caravel_user_project/verilog/rtl
     config:         config.tcl
 
 env: # used for simulation
