@@ -28,7 +28,7 @@ jobs:
     # checkout multi_project tools
     - uses: actions/checkout@v2
       with:
-          name: mattvenn/multi_project_tools
+          repository: mattvenn/multi_project_tools
           path: ./multi_project_tools
 
     # multi project tools python deps
