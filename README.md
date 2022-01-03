@@ -8,6 +8,7 @@ It was taped out on MPW1 & 2.
 
 It's a simple project that reads 3 encoders and generates PWM signals to drive an RGB LED.
 
+![pic](/doc/rgb_mixer_gds.png)
 ![pic](/doc/schematic.jpg)
 
 # License
