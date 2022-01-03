@@ -79,7 +79,8 @@ jobs:
     # not git-test as it will fail while on actions branch
     - name: test multi tools
       run: |
-        ls /home/runner/caravel_user_project/openlane/user_project_wrapper
+        # remove the macro.cfg so that it gets created by --create-openlane-config with the openram macros in place
+        rm /home/runner/caravel_user_project/openlane/user_project_wrapper/macro.cfg
         cd ./multi_project_tools
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --create-openlane-config --copy-project --openram
