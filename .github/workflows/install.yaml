@@ -41,7 +41,7 @@ jobs:
       run: |
         find .
         cd ./multi_project_tools
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID 
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone --project $PROJECT_ID 
 
     # PDK dependencies we can install from package manager
     - name: install deps
