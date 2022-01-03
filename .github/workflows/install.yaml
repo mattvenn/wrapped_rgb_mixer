@@ -42,7 +42,7 @@ jobs:
         echo ${GITHUB_WORKSPACE}/oss-cad-suite/bin >> $GITHUB_PATH
 
     - name: test yosys
-        run: yosys --version
+      run: yosys --version
 
     # install riscv
     - name: install RISCV
