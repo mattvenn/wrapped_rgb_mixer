@@ -41,8 +41,10 @@ jobs:
       run: |
         cd ./multi_project_tools
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos --project $PROJECT_ID 
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-git
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --project $PROJECT_ID --test-gds
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-gds
 
     # install oss suite
     - name: install oss suite
