@@ -61,6 +61,10 @@ jobs:
     - name: install netgen
       run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_netgen.sh
 
+    # magic dependency
+    - name: install magic
+      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_magic.sh
+
     # install the PDK, OpenLane
     - name: install PDK & OpenLane
       run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_pdk.sh
@@ -85,10 +89,3 @@ jobs:
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-ports
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-caravel
 
-
-#
-#    # magic dependency
-#    - name: install magic
-#      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_magic.sh
-#
-#
