@@ -1,19 +1,19 @@
 project_directory: "../"
 
 caravel:
-    root:           ../caravel_user_project
-    gl_dir:         ../caravel_user_project/verilog/gl
-    test_dir:       ../caravel_user_project/verilog/dv
-    rtl_dir:        ../caravel_user_project/verilog/rtl
+    root:           /home/runner/caravel_user_project/caravel
+    gl_dir:         /home/runner/caravel_user_project/caravel/verilog/gl
+    test_dir:       /home/runner/caravel_user_project/caravel/verilog/dv
+    rtl_dir:        /home/runner/caravel_user_project/caravel/verilog/rtl
     config:         config.tcl
 
 env: # used for simulation
     GCC_PATH:       /opt/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14/bin/
     GCC_PREFIX:     riscv64-unknown-elf
-    PDK_PATH:       ../pdk/sky130A
+    PDK_PATH:       /home/runner/pdk/sky130A
 
 lvs:
-    PDK_PATH:       ../pdk/sky130A 
-    PDK_ROOT:       ../pdk/
-    OPENLANE:       ../openlane
+    PDK_PATH:       /home/runner/pdk/sky130A 
+    PDK_ROOT:       /home/runner/pdk
+    OPENLANE:       /home/runner/openlane
 
