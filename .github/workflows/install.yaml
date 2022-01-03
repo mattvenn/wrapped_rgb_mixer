@@ -6,6 +6,7 @@ jobs:
 
   install:
     env:
+        PROJECT_ID:             1
         MAGIC_VERSION:          8.3.209
         NETGEN_VERSION:         1.5.205
         PDK_ROOT:               /home/runner/pdk
@@ -39,7 +40,7 @@ jobs:
     - name: test multi tools
       run: |
         cd ./multi_project_tools
-        ./multi_tool.py
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml
 
     # PDK dependencies we can install from package manager
     - name: install deps
