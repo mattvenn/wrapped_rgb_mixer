@@ -39,9 +39,10 @@ jobs:
     # test multi project tools
     - name: test multi tools
       run: |
-        find .
         cd ./multi_project_tools
-        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-repos --project $PROJECT_ID --test-git --test-gds
+        ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos --project $PROJECT_ID 
+        find .
+        ./multi_tool.py --project $PROJECT_ID --test-git --test-gds
 
     # install oss suite
     - name: install oss suite
