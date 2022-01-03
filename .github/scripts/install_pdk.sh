@@ -10,5 +10,5 @@ cd caravel
 git checkout $CARAVEL_COMMIT
 cd ..
 
-#make pdk
-#make openlane
+make pdk
+make openlane

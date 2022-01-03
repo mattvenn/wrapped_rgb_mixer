@@ -70,10 +70,10 @@ jobs:
       run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_pdk.sh
 
     # check pdk path
-    #- name: check pdk
-    #  run: |
-    #    ls $PDK_ROOT
-    #    ls $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+    - name: check pdk
+      run: |
+        ls $PDK_ROOT
+        ls $PDK_ROOT/sky130A/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
 
     # test multi project tools
     # not git-test as it will fail while on actions branch
@@ -84,6 +84,7 @@ jobs:
         cd ./multi_project_tools
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --clone-shared --clone-repos
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --create-openlane-config --copy-project --openram
+        cat /home/runner/caravel_user_project/verilog/rtl/user_project_wrapper.v
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-gds
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --test-module
         ./multi_tool.py --local ${GITHUB_WORKSPACE}/.github/scripts/github_local.yaml --config ${GITHUB_WORKSPACE}/.github/scripts/projects.yaml --prove-wrapper
