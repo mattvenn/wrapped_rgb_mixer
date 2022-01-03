@@ -1,0 +1,57 @@
+name: run all tests
+# either manually started, or on a schedule
+on:
+    push
+jobs:
+
+  install:
+    env:
+        MAGIC_VERSION:          8.3.209
+        NETGEN_VERSION:         1.5.205
+        PDK_ROOT:               /home/runner/pdk
+        OPENLANE_ROOT:          /home/runner/openlane
+        CARAVEL_ROOT:           /home/runner/caravel_user_project/caravel
+        USER_PROJECT_COMMIT:    mpw-3
+        SKYWATER_COMMIT:        c094b6e83a4f9298e47f696ec5a7fd53535ec5eb
+        OPEN_PDKS_COMMIT:       14db32aa8ba330e88632ff3ad2ff52f4f4dae1ad
+        CARAVEL_COMMIT:         5712871d27c08900d18edc72a7f534cc8be1b2dd
+        OPENLANE_TAG:           mpw-3a
+        OPENLANE_IMAGE_NAME:    efabless/openlane:mpw-3a
+
+    # ubuntu
+    runs-on: ubuntu-latest
+    steps:
+
+    # checkout the repo to get the scripts
+    - uses: actions/checkout@v2
+
+    # checkout multi_project tools
+    - uses: actions/checkout@v2
+      with:
+          name: mattvenn/multi_project_tools
+          path: ./multi_project_tools
+
+    # multi project tools python deps
+    - name: install python deps
+      run: pip3 install -r ./multi_project_tools/requirements.txt
+
+    # test multi project tools
+    - name: test multi tools
+      run: ./multi_tool.py
+
+    # PDK dependencies we can install from package manager
+    - name: install deps
+      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
+#
+#    # netgen dependency
+#    - name: install netgen
+#      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_netgen.sh
+#
+#    # magic dependency
+#    - name: install magic
+#      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_magic.sh
+#
+#    # install the PDK, OpenLane
+#    - name: install PDK & OpenLane
+#      run: bash ${GITHUB_WORKSPACE}/.github/scripts/install_pdk.sh
+#
