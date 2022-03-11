@@ -18,7 +18,7 @@ set ::env(VERILOG_FILES) "$::env(DESIGN_DIR)/wrapper.v \
     $::env(DESIGN_DIR)/rgb_mixer/src/encoder.v"
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 130 210"
+set ::env(DIE_AREA) "0 0 150 210"
 set ::env(PL_TARGET_DENSITY) 0.75
 
 set ::env(SYNTH_DEFINES) "MPRJ_IO_PADS=38"
@@ -28,7 +28,7 @@ set ::env(CLOCK_PERIOD) "10"
 set ::env(CLOCK_PORT) "wb_clk_i"
 
 set ::env(DESIGN_IS_CORE) 0
-set ::env(GLB_RT_MAXLAYER) 5
+set ::env(RT_MAX_LAYER) {met4}
 
 set ::env(VDD_NETS) [list {vccd1}]
 set ::env(GND_NETS) [list {vssd1}]
