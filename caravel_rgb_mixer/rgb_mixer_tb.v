@@ -17,10 +17,6 @@
 
 `timescale 1 ns / 1 ps
 
-`include "uprj_netlists.v" // this file gets created automatically by multi_project_tools from the source section of info.yaml
-`include "caravel_netlists.v"
-`include "spiflash.v"
-
 module rgb_mixer_tb;
     initial begin
         $dumpfile ("rgb_mixer.vcd");
