@@ -56,7 +56,7 @@ async def test_all(dut):
     cocotb.fork(clock.start())
 
     # wait for the reset signal - time out if necessary - should happen around 165us
-    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.reset), 180, 'us')
+    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.reset), 500, 'us')
     await FallingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.reset)
 
     assert dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc0.value == 0

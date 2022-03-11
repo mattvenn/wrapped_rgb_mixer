@@ -67,7 +67,7 @@ void main()
     reg_la0_data |= (1 << PROJECT_ID); // enable the project
 
     // reset design with 0bit of 2nd bank of LA
-    reg_la1_oenb = 0;
+    reg_la1_oenb = 1; // enable
     reg_la1_iena = 0;
     reg_la1_data = 1;
     reg_la1_data = 0;

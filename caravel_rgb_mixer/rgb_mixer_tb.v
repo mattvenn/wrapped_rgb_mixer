@@ -29,8 +29,8 @@ module rgb_mixer_tb;
     reg power1, power2;
     reg power3, power4;
 
-    // GL design loses the reset signal name
-    wire design_reset = uut.mprj.la1_data_in[0];
+    // GL design loses the reset signal name, also doesn't keep la1_data_in
+    wire design_reset = uut.mprj.la_data_in[32];
 
     wire gpio;
     wire [37:0] mprj_io;
