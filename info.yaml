@@ -42,9 +42,9 @@ source:
     - rgb_mixer/src/rgb_mixer.v
 
 # gds - check size = 300x300, nothing on metal 5, do a DRC, check 141 tristate buffers, check LVS
-gds:
-  directory: "gds"
-  gds_filename: "wrapped_rgb_mixer.gds"
-  lef_filename: "wrapped_rgb_mixer.lef"
-  lvs_filename: "wrapped_rgb_mixer.lvs.powered.v"
+final:
+  directory: "final"
+  gds_filename: "gds/wrapped_rgb_mixer.gds"
+  lef_filename: "lef/wrapped_rgb_mixer.lef"
+  lvs_filename: "verilog/gl/wrapped_rgb_mixer.v"
 
