@@ -35,8 +35,5 @@ set ::env(GND_NETS) [list {vssd1}]
 
 #set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
-set ::env(RUN_CVC) 0
-
-
 set ::env(FP_IO_VTHICKNESS_MULT) 4
 set ::env(FP_IO_HTHICKNESS_MULT) 4

@@ -31,7 +31,7 @@ async def test_start(dut):
     dut.RSTB.value = 1
 
     # wait for the project to become active
-    await RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.active)
+    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_3.active), 500, 'us')
 
 async def run_encoder_test(encoder, dut_enc, max_count):
     for i in range(clocks_per_phase * 2 * max_count):
@@ -56,12 +56,12 @@ async def test_all(dut):
     cocotb.fork(clock.start())
 
     # wait for the reset signal - time out if necessary - should happen around 165us
-    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.reset), 500, 'us')
-    await FallingEdge(dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.reset)
+    await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.reset), 500, 'us')
+    await FallingEdge(dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.reset)
 
-    assert dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc0.value == 0
-    assert dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc1.value == 0
-    assert dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc2.value == 0
+    assert dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc0.value == 0
+    assert dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc1.value == 0
+    assert dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc2.value == 0
 
     # pwm should all be low at start
     assert dut.pwm0_out.value == 0
@@ -70,9 +70,9 @@ async def test_all(dut):
 
     # do 3 ramps for each encoder 
     max_count = 255
-    await run_encoder_test(encoder0, dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc0, max_count)
-    await run_encoder_test(encoder1, dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc1, max_count)
-    await run_encoder_test(encoder2, dut.uut.mprj.wrapped_rgb_mixer_0.rgb_mixer0.enc2, max_count)
+    await run_encoder_test(encoder0, dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc0, max_count)
+    await run_encoder_test(encoder1, dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc1, max_count)
+    await run_encoder_test(encoder2, dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.enc2, max_count)
 
     # sync to pwm
     await RisingEdge(dut.pwm0_out)
