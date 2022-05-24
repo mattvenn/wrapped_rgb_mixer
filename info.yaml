@@ -14,7 +14,7 @@ caravel_test:
   recipe: "coco_test"
   gl_recipe: "coco_test_gl"
   directory: "caravel_rgb_mixer"
-  id: 0
+  id: 3
   module_name: "wrapped_rgb_mixer"
   instance_name: "wrapped_rgb_mixer"
 
