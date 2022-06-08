@@ -1,5 +1,4 @@
 project_directory: "/home/runner/"
-#project_directory: "/home/matt/work/asic-workshop/shuttle5/openlane/designs/"
 
 caravel:
     root:           /home/runner/caravel_user_project
@@ -17,9 +16,3 @@ env: # used for simulation
     PDK_ROOT:       /home/runner/pdk
     OPENLANE:       /home/runner/openlane
     PDK:            sky130A
-
-lvs:
-    PDK_PATH:       ../pdk/sky130A 
-    PDK_ROOT:       ../pdk/
-    OPENLANE:       ../openlane
-
