@@ -26,9 +26,7 @@ jobs:
     - name: setup python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.7.7'
-        cache: 'pip'
-    - run: pip install -r /home/runner/multi_project_tools/requirements.txt # $HOME doesn't work
+        python-version: '3.7.7' # install the python version needed
 
     # python deps from reqirements file, use a marketplace action
     - name: Install Python dependencies
