@@ -8,6 +8,8 @@ jobs:
         PDK_ROOT:       /home/runner/pdk
         PDK:            sky130A
         NETGEN_VERSION:         1.5.205
+        MAGIC_VERSION:          8.3.209
+
     # ubuntu
     runs-on: ubuntu-latest
     steps:
@@ -30,6 +32,17 @@ jobs:
         git clone https://github.com/RTimothyEdwards/netgen
         cd netgen
         git checkout $NETGEN_VERSION
+        ./configure
+        make
+        sudo make install
+
+    # magic, used for LVS
+    - name: magic
+      run: |
+        cd $HOME
+        git clone git://opencircuitdesign.com/magic
+        cd magic
+        git checkout $MAGIC_VERSION
         ./configure
         make
         sudo make install
