@@ -117,9 +117,8 @@ jobs:
     - name: lvs
       run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
-# needs local directory from multi_project
-#    - name: tristate-z
-#      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
+    - name: tristate-z
+      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
 
     - name: docs
       run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram --force
