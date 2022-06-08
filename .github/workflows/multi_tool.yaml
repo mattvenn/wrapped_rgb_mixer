@@ -102,7 +102,7 @@ jobs:
 
     #  needs netgen
     - name: lvs
-      run: python $HOME/multi_tool.py --test-lvs 
+      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
 # needs local directory from multi_project
 #    - name: tristate-z
