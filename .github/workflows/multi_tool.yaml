@@ -8,6 +8,8 @@ jobs:
         PDK_ROOT:       /home/runner/pdk
         PDK:            sky130A
         NETGEN_VERSION:         1.5.205
+        MAGIC_VERSION:          8.3.273
+
     # ubuntu
     runs-on: ubuntu-latest
     steps:
@@ -22,6 +24,33 @@ jobs:
         pwd
         ls multi_project_tools
         ls $HOME/multi_project_tools/requirements.txt
+
+    # deps for magic and netgen
+    - name: deps
+      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
+
+    # used for LVS test
+    - name: netgen
+      run: |
+        cd $HOME
+        git clone https://github.com/RTimothyEdwards/netgen
+        cd netgen
+        git checkout $NETGEN_VERSION
+        ./configure
+        make
+        sudo make install
+        netgen -batch
+
+    # magic, used for LVS
+    - name: magic
+      run: |
+        cd $HOME
+        git clone git://opencircuitdesign.com/magic
+        cd magic
+        git checkout $MAGIC_VERSION
+        ./configure
+        make
+        sudo make install
 
     # need python
     - name: setup python
@@ -93,9 +122,8 @@ jobs:
 #    - name: lvs
 #      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
-# needs local directory from multi_project
-#    - name: tristate-z
-#      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
+    - name: tristate-z
+      run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
 
     - name: docs
       run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram --force

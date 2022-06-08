@@ -1,3 +1,5 @@
+[![multi_tool](https://github.com/mattvenn/wrapped_rgb_mixer/actions/workflows/multi_tool.yaml/badge.svg)](https://github.com/mattvenn/wrapped_rgb_mixer/actions/workflows/multi_tool.yaml)
+
 # Wrapped RGB Mixer
 
 This repository is a template for projects 3.2 and 5.1 that takes you through:
