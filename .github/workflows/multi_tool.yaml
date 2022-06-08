@@ -23,17 +23,6 @@ jobs:
         ls multi_project_tools
         ls $HOME/multi_project_tools/requirements.txt
 
-    # used for LVS test
-    - name: netgen
-      run: |
-        cd $HOME
-        git clone https://github.com/RTimothyEdwards/netgen
-        cd netgen
-        git checkout $NETGEN_VERSION
-        ./configure
-        make
-        sudo make install
-
     # need python
     - name: setup python
       uses: actions/setup-python@v2
@@ -101,8 +90,8 @@ jobs:
       run: python $HOME/multi_project_tools/multi_tool.py --prove-wrapper
 
     #  needs netgen
-    - name: lvs
-      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
+#    - name: lvs
+#      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
 # needs local directory from multi_project
 #    - name: tristate-z
