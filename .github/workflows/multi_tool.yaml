@@ -27,19 +27,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: '3.7.7' # install the python version needed
+        cache: 'pip'
+        cache-dependency-path: "/home/runner/multi_project_tools/requirements.txt"
 
     # python deps from reqirements file, use a marketplace action
-    - name: Install Python dependencies
-      uses: py-actions/py-dependency-install@v2
-      with:
-        path: "/home/runner/multi_project_tools/requirements.txt"
-
-    # install riscv gcc
-    - name: riscv gcc
-      run: |
-        cd $HOME
-        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
-        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+#    - name: Install Python dependencies
+#      uses: py-actions/py-dependency-install@v2
+#      with:
+#        path: "/home/runner/multi_project_tools/requirements.txt"
 
     # pwd
     - name: pwd
@@ -53,6 +48,13 @@ jobs:
     # install projects
     - name: install project
       run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
+
+    # install riscv gcc
+    - name: riscv gcc
+      run: |
+        cd $HOME
+        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
 
     # build pdk
     - name: pdk & caravel
