@@ -46,10 +46,6 @@ jobs:
     - name: fetch all
       run: python $HOME/multi_project_tools/multi_tool.py --clone-shared-repos --openram --clone-repo
 
-    # install projects
-    - name: install project
-      run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
-
     # install riscv gcc
     - name: riscv gcc
       run: |
@@ -71,6 +67,10 @@ jobs:
     - run: | 
         yosys --version
         iverilog -V
+
+    # install projects
+    - name: install project
+      run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
 
     # tests
     - name: test gds
