@@ -118,9 +118,8 @@ jobs:
     - name: prove wrapper
       run: python $HOME/multi_project_tools/multi_tool.py --prove-wrapper
 
-    #  needs netgen
-#    - name: lvs
-#      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
+    - name: lvs
+      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
     - name: tristate-z
       run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
