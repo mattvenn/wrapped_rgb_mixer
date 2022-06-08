@@ -99,14 +99,6 @@ jobs:
     - name: docs
       run: python $HOME/multi_project_tools/multi_tool.py --generate-doc --openram --force
 
-    - name: check path
-      run: |
-          ls mgmt_core_wrapper
-          ls mgmt_core_wrapper/verilog
-          ls mgmt_core_wrapper/verilog/dv
-          ls mgmt_core_wrapper/verilog/dv/make
-          ls mgmt_core_wrapper//verilog/dv/make/sim.makefile
-
     # run the caravel test
     - name: caravel test
       run: python $HOME/multi_project_tools/multi_tool.py --test-caravel
