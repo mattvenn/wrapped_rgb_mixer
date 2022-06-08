@@ -14,18 +14,13 @@ jobs:
     - name: checkout repo
       uses: actions/checkout@v2
 
-    # build pdk
-    - name: pdk & caravel
-      run: |
-        cd $HOME
-        git clone https://github.com/efabless/caravel_user_project.git -b mpw-6c
-        cd caravel_user_project
-        make setup
-
     - name: multi tools
       run: |
         cd $HOME
         git clone https://github.com/mattvenn/multi_project_tools.git
+        pwd
+        ls multi_project_tools
+        ls $HOME/multi_project_tools/requirements.txt
 
     # need python
     - name: setup python
@@ -48,13 +43,6 @@ jobs:
       run: |
         pwd # useful debug info
 
-    # install oss fpga tools
-    - name: install oss-cad-suite
-      uses: YosysHQ/setup-oss-cad-suite@v1
-    - run: | 
-        yosys --version
-        iverilog -V
-
     # fetch all the repos
     - name: fetch all
       run: python $HOME/multi_project_tools/multi_tool.py --clone-shared-repos --openram --clone-repo
@@ -62,6 +50,21 @@ jobs:
     # install projects
     - name: install project
       run: python $HOME/multi_project_tools/multi_tool.py --create-openlane-config --copy-project --openram --copy-gds
+
+    # build pdk
+    - name: pdk & caravel
+      run: |
+        cd $HOME
+        git clone https://github.com/efabless/caravel_user_project.git -b mpw-6c
+        cd caravel_user_project
+        make setup
+
+    # install oss fpga tools
+    - name: install oss-cad-suite
+      uses: YosysHQ/setup-oss-cad-suite@v1
+    - run: | 
+        yosys --version
+        iverilog -V
 
     # tests
     - name: test gds
