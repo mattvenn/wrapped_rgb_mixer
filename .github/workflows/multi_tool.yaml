@@ -25,6 +25,10 @@ jobs:
         ls multi_project_tools
         ls $HOME/multi_project_tools/requirements.txt
 
+    # deps for magic and netgen
+    - name: deps
+      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
+
     # used for LVS test
     - name: netgen
       run: |
@@ -35,12 +39,12 @@ jobs:
         ./configure
         make
         sudo make install
+        netgen -batch
 
     # magic, used for LVS
     - name: magic
       run: |
         cd $HOME
-        sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
         git clone git://opencircuitdesign.com/magic
         cd magic
         git checkout $MAGIC_VERSION
