@@ -60,6 +60,6 @@ docs:
 projects:
     rgb_mixer:
         repo:   'https://github.com/mattvenn/wrapped_rgb_mixer'
-        commit: 'mpw5'
+        commit: 'mpw7'
         pos:    '0 0 N'
 
