@@ -6,9 +6,9 @@ jobs:
     env:
         OPENLANE_ROOT:  /home/runner/openlane
         PDK_ROOT:       /home/runner/pdk
-        PDK:            sky130A
-        NETGEN_VERSION:         1.5.205
-        MAGIC_VERSION:          8.3.273
+        PDK:            sky130B
+        NETGEN_VERSION:         1.5.219
+        MAGIC_VERSION:          8.3.311
 
     # ubuntu
     runs-on: ubuntu-latest
