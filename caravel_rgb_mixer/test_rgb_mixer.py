@@ -10,7 +10,7 @@ clocks_per_phase = 10
 @cocotb.test()
 async def test_start(dut):
     clock = Clock(dut.clk, 25, units="ns")
-    cocotb.fork(clock.start())
+    cocotb.start_soon(clock.start())
     
     dut.RSTB.value = 0
     dut.power1.value = 0;
@@ -53,7 +53,7 @@ async def test_all(dut):
     encoder1 = Encoder(dut.clk, dut.enc1_a, dut.enc1_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
     encoder2 = Encoder(dut.clk, dut.enc2_a, dut.enc2_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
 
-    cocotb.fork(clock.start())
+    cocotb.start_soon(clock.start())
 
     # wait for the reset signal - time out if necessary - should happen around 165us
     await with_timeout(RisingEdge(dut.uut.mprj.wrapped_rgb_mixer_3.rgb_mixer0.reset), 500, 'us')
@@ -91,7 +91,7 @@ async def test_all_gl(dut):
     encoder1 = Encoder(dut.clk, dut.enc1_a, dut.enc1_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
     encoder2 = Encoder(dut.clk, dut.enc2_a, dut.enc2_b, clocks_per_phase = clocks_per_phase, noise_cycles = clocks_per_phase / 4)
 
-    cocotb.fork(clock.start())
+    cocotb.start_soon(clock.start())
 
     # wait for the reset signal - time out if necessary - should happen around 165us
     await with_timeout(RisingEdge(dut.design_reset), 180, 'us')
