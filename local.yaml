@@ -10,7 +10,7 @@ caravel:
     config:         config.tcl
 
 env: # used for simulation
-    GCC_PATH:       /home/runner/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14
+    GCC_PATH:       /home/runner/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14/bin/
     GCC_PREFIX:     riscv64-unknown-elf
     PDK_PATH:       /home/runner/pdk/sky130B
     PDK_ROOT:       /home/runner/pdk
