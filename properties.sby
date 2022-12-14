@@ -6,7 +6,7 @@ smtbmc
 
 [script]
 read -formal wrapper.v rgb_mixer.v pwm.v debounce.v encoder.v
-prep -top wrapper
+prep -top wrapped_rgb_mixer
 
 [files]
 wrapper.v

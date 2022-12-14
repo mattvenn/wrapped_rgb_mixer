@@ -1,0 +1,50 @@
+--- 
+# information
+project: 
+  title: "RGB Mixer"
+  description: "reads 3 encoders and generates PWM signals to drive an RGB LED"
+  author: "Matt Venn"
+  picture: doc/schematic.jpg
+  license: LICENSE
+
+interfaces: ['la1', 'gpio']
+
+# test within caravel
+caravel_test:
+  recipe: "coco_test"
+  gl_recipe: "coco_test_gl"
+  directory: "caravel_rgb_mixer"
+  id: 3
+  module_name: "wrapped_rgb_mixer"
+  instance_name: "wrapped_rgb_mixer"
+
+# module test
+module_test:
+  recipe: "all" 
+  directory: "rgb_mixer"
+  makefile: "Makefile"
+
+# run the wrapper formal proof
+wrapper_proof:
+  directory: "."
+  sby: "properties.sby"
+
+# openlane config, used in case I need to re-harden
+openlane:
+  config: "config.tcl"
+
+# source required for various configs and module instantiation
+source:
+    - wrapper.v
+    - rgb_mixer/src/debounce.v
+    - rgb_mixer/src/encoder.v
+    - rgb_mixer/src/pwm.v
+    - rgb_mixer/src/rgb_mixer.v
+
+# gds - check size = 300x300, nothing on metal 5, do a DRC, check 141 tristate buffers, check LVS
+final:
+  directory: "final"
+  gds_filename: "gds/wrapped_rgb_mixer.gds"
+  lef_filename: "lef/wrapped_rgb_mixer.lef"
+  lvs_filename: "verilog/gl/wrapped_rgb_mixer.v"
+
