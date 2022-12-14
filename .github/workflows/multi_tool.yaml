@@ -7,8 +7,8 @@ jobs:
         OPENLANE_ROOT:  /home/runner/openlane
         PDK_ROOT:       /home/runner/pdk
         PDK:            sky130B
-        NETGEN_VERSION:         1.5.219
-        MAGIC_VERSION:          8.3.311
+        NETGEN_VERSION:         1.5.242
+        MAGIC_VERSION:          8.3.331
 
     # ubuntu
     runs-on: ubuntu-latest
@@ -25,38 +25,38 @@ jobs:
         ls multi_project_tools
         ls $HOME/multi_project_tools/requirements.txt
 
-    # deps for magic and netgen
-    - name: deps
-      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
-
-    # used for LVS test
-    - name: netgen
-      run: |
-        cd $HOME
-        git clone https://github.com/RTimothyEdwards/netgen
-        cd netgen
-        git checkout $NETGEN_VERSION
-        ./configure
-        make
-        sudo make install
-        netgen -batch
-
-    # magic, used for LVS
-    - name: magic
-      run: |
-        cd $HOME
-        git clone git://opencircuitdesign.com/magic
-        cd magic
-        git checkout $MAGIC_VERSION
-        ./configure
-        make
-        sudo make install
+#    # deps for magic and netgen
+#    - name: deps
+#      run: sudo apt-get install -y tcsh csh tcl-dev tk-dev libcairo2-dev
+#
+#    # used for LVS test
+#    - name: netgen
+#      run: |
+#        cd $HOME
+#        git clone https://github.com/RTimothyEdwards/netgen
+#        cd netgen
+#        git checkout $NETGEN_VERSION
+#        ./configure
+#        make
+#        sudo make install
+#        netgen -batch
+#
+#    # magic, used for LVS
+#    - name: magic
+#      run: |
+#        cd $HOME
+#        git clone git://opencircuitdesign.com/magic
+#        cd magic
+#        git checkout $MAGIC_VERSION
+#        ./configure
+#        make
+#        sudo make install
 
     # need python
     - name: setup python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.7.7' # install the python version needed
+        python-version: '3.10' # install the python version needed
 # doesn't work
 #        cache: 'pip'
 #        cache-dependency-path: "/home/runner/multi_project_tools/requirements.txt"
@@ -80,14 +80,14 @@ jobs:
     - name: riscv gcc
       run: |
         cd $HOME
-        wget https://static.dev.sifive.com/dev-tools/riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
-        tar -xzf riscv64-unknown-elf-gcc-8.3.0-2020.04.1-x86_64-linux-ubuntu14.tar.gz
+        wget https://static.dev.sifive.com/dev-tools/freedom-tools/v2020.12/riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz 
+        tar -xzf riscv64-unknown-elf-toolchain-10.2.0-2020.12.8-x86_64-linux-ubuntu14.tar.gz
 
     # build pdk
     - name: pdk & caravel
       run: |
         cd $HOME
-        git clone https://github.com/efabless/caravel_user_project.git -b mpw-7a
+        git clone https://github.com/efabless/caravel_user_project.git -b mpw-8c
         cd caravel_user_project
         make setup
 
@@ -118,8 +118,8 @@ jobs:
     - name: prove wrapper
       run: python $HOME/multi_project_tools/multi_tool.py --prove-wrapper
 
-    - name: lvs
-      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
+#    - name: lvs
+#      run: python $HOME/multi_project_tools/multi_tool.py --test-lvs 
 
     - name: tristate-z
       run: python $HOME/multi_project_tools/multi_tool.py --test-tristate-z
