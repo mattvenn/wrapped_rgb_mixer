@@ -15,7 +15,7 @@ jobs:
     steps:
     # need the repo checked out
     - name: checkout repo
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: multi tools
       run: |
@@ -54,7 +54,7 @@ jobs:
 
     # need python
     - name: setup python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.10' # install the python version needed
 # doesn't work
@@ -63,7 +63,7 @@ jobs:
 
     # python deps from reqirements file, use a marketplace action
     - name: Install Python dependencies
-      uses: py-actions/py-dependency-install@v2
+      uses: py-actions/py-dependency-install@v4
       with:
         path: "/home/runner/multi_project_tools/requirements.txt"
 
