@@ -1,0 +1,25 @@
+{
+    "DESIGN_NAME": "wrapped_rgb_mixer",
+    "RUN_KLAYOUT_XOR": "0",
+    "RUN_KLAYOUT_DRC": "0",
+    "PL_RESIZER_BUFFER_OUTPUT_PORTS": "0",
+    "VERILOG_FILES": [ "dir::wrapper.v",
+        "dir::rgb_mixer/src/rgb_mixer.v",
+        "dir::rgb_mixer/src/pwm.v",
+        "dir::rgb_mixer/src/debounce.v",
+        "dir::rgb_mixer/src/encoder.v"
+            ],
+    "FP_SIZING": "absolute",
+    "DIE_AREA": "0 0 180 210",
+    "PL_TARGET_DENSITY": "0.75",
+    "SYNTH_DEFINES": "MPRJ_IO_PADS=38",
+    "CLOCK_PERIOD": "10",
+    "CLOCK_PORT": "wb_clk_i",
+    "DESIGN_IS_CORE": "0",
+    "RT_MAX_LAYER": "met4",
+    "VDD_NETS": ["vccd1"],
+    "GND_NETS": ["vssd1"],
+    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
+    "FP_IO_VTHICKNESS_MULT": "4",
+    "FP_IO_HTHICKNESS_MULT": "4"
+}
