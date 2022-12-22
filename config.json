@@ -19,7 +19,6 @@
     "RT_MAX_LAYER": "met4",
     "VDD_NETS": ["vccd1"],
     "GND_NETS": ["vssd1"],
-    "FP_PIN_ORDER_CFG": "dir::pin_order.cfg",
     "FP_IO_VTHICKNESS_MULT": "4",
     "FP_IO_HTHICKNESS_MULT": "4"
 }
